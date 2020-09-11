@@ -40,7 +40,7 @@
             android:layout_marginBottom="8dp"
             android:padding="8dp"
             android:text="@{item.title.value}"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
 

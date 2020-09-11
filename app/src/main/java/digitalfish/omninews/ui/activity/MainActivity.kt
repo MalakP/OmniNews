@@ -27,7 +27,6 @@ class MainActivity : BaseActivity() {
                 viewModelFactory { appContainer.mainViewModel.create() }).get(
                 MainViewModel::class.java
             )
-
         binding.lifecycleOwner = this
         setObservers()
         setViewPager()
@@ -55,6 +54,7 @@ class MainActivity : BaseActivity() {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     query?.let {
                         viewModel.loadData(it)
+                        searchView.onActionViewCollapsed()
                     }
                     return false
                 }
