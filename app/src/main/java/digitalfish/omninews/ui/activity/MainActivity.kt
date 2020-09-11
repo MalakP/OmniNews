@@ -22,14 +22,18 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        viewModel = 
+        viewModel =
             ViewModelProvider(this,
-            viewModelFactory { appContainer.mainViewModel.create() }).get(
-            MainViewModel::class.java)
-
+                viewModelFactory { appContainer.mainViewModel.create() }).get(
+                MainViewModel::class.java
+            )
 
         binding.lifecycleOwner = this
         setObservers()
+        setViewPager()
+    }
+
+    private fun setViewPager() {
         binding.viewPager.adapter = TabPagerAdapter(this, supportFragmentManager)
         binding.tabs.setupWithViewPager(binding.viewPager)
     }

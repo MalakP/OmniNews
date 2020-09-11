@@ -17,14 +17,14 @@ class DetailsViewModel(private val dataRepository: DataRepository): ViewModel() 
         viewModelScope.launch {
             when(dataType) {
                 DATA_TYPE_ARTICLE->{
-                    val paragraphs = selectedIdx?.let { dataRepository.newsStored?.articles?.get(it)?.main_text?.paragraphs }
+                    val paragraphs = dataRepository.newsStored?.articles?.get(selectedIdx)?.main_text?.paragraphs
                     detailsLive.value = paragraphs?.filter{it.text?.value!=null}?.map{it.text?.value}?.joinToString (
                         prefix = "\t",
                         separator = "\n\n\t"
                     )
                 }
                 DATA_TYPE_TOPIC->{
-                    val topic = selectedIdx?.let { dataRepository.newsStored?.topics?.get(it) }
+                    val topic=  dataRepository.newsStored?.topics?.get(selectedIdx)
                     detailsLive.value = topic?.type
                 }
             }

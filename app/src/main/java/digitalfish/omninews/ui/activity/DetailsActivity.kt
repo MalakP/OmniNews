@@ -19,14 +19,16 @@ class DetailsActivity :BaseActivity() {
         super.onCreate(savedInstanceState)
         val selectedIdx = intent.getIntExtra(EXTRA_SELECTED_ITEM, -1)
         val dataType = intent.getIntExtra(EXTRA_DATA_TYPE, -1)
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_details)
         viewModel = ViewModelProvider(this,
             viewModelFactory { appContainer.detailsViewModel.create() }).get(
             DetailsViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-        displayHomeUp()
         viewModel.loadData(dataType, selectedIdx)
+
+        displayHomeUp()
     }
 
     private fun displayHomeUp() {
