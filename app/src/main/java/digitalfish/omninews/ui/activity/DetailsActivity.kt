@@ -12,7 +12,6 @@ import digitalfish.omninews.viewmodel.DetailsViewModel
 private lateinit var binding: ActivityDetailsBinding
 private lateinit var viewModel: DetailsViewModel
 
-
 class DetailsActivity :BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

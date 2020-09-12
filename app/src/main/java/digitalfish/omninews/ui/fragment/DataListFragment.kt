@@ -44,6 +44,14 @@ class DataListFragment : Fragment() {
         return binding.root
     }
 
+    private fun setupRecycler(type: Int) {
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        when(type){
+            DATA_TYPE_TOPIC -> binding.recyclerView.adapter = createTopicAdapter()
+            else -> binding.recyclerView.adapter = createArticleAdapter()
+        }
+    }
+
     private fun setObservers(type: Int) {
         viewModel?.newsLive?.observe(this, Observer { news ->
             news?.let {
@@ -53,14 +61,6 @@ class DataListFragment : Fragment() {
                 }
             }
         })
-    }
-
-    private fun setupRecycler(type: Int) {
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        when(type){
-            DATA_TYPE_TOPIC -> binding.recyclerView.adapter = createTopicAdapter()
-            else -> binding.recyclerView.adapter = createArticleAdapter()
-        }
     }
 
     private fun createArticleAdapter():ArticleAdapter {

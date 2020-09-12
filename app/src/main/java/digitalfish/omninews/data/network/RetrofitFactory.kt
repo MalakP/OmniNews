@@ -10,7 +10,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-
 object RetrofitFactory {
 
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
