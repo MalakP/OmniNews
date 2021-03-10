@@ -10,7 +10,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-object RetrofitFactory {
+class RetrofitFactory {
+
+    fun getRetrofitForApi(baseUrl: String):Retrofit =
+        retrofit(baseUrl, okHttpClient)
 
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level =
@@ -23,7 +26,7 @@ object RetrofitFactory {
 
     val okHttpClient: OkHttpClient = OkHttpClient().newBuilder().addInterceptor(loggingInterceptor).build()
 
-    fun retrofit(baseUrl: String, httpClient: OkHttpClient): Retrofit =
+    private fun retrofit(baseUrl: String, httpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .client(httpClient)
             .baseUrl(baseUrl)

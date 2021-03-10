@@ -9,7 +9,7 @@ import digitalfish.omninews.viewmodel.MainViewModel
 const val BASE_URL = "https://omni-content.omni.news/"
 
 class AppContainer {
-    private val newsApi = RetrofitFactory.retrofit(BASE_URL, RetrofitFactory.okHttpClient).create(
+    private val newsApi = RetrofitFactory().getRetrofitForApi(BASE_URL).create(
         NewsApi::class.java
     )
 
@@ -20,7 +20,6 @@ class AppContainer {
     interface Factory<T> {
         fun create(): T
     }
-
 
     class MainViewModelFactory(private val dataRepository: DataRepository) :
         Factory<MainViewModel> {
