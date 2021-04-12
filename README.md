@@ -10,16 +10,9 @@ Live data variables are observed by views (Activities, Fragments, data bindings 
 
 In Fragment, based on observed data, actual lists are created with the corresponding recyclerview adapters.
 
- 
-
 Interaction diagram
+
 ![image](https://user-images.githubusercontent.com/11958691/114364865-24c2e580-9b7a-11eb-871d-2f240604876f.png)
-
-
-
- 
-
- 
 
 Patterns used:
 
